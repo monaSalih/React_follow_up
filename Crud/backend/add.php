@@ -3,19 +3,15 @@
 <?php 
 
 header("Access-Control-Allow-Origin: *");
-header("Access-Control-Allow-Headers: access");
-header("Access-Control-Allow-Methods:*");
-header("Content-Type: application/json; charset=UTF-8");
-header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With");
-	
+
 	include 'conn.php';
-		$user_name = $_REQUEST['user_name'];
-		$phone = $_REQUEST['phone'];
-		$adress = $_REQUEST['adress'];
-		
-		$sql = "INSERT INTO crudapi(user_name,phone,address) VALUES('$user_name','$phone','$adress');";
+	$user_name = isset($_REQUEST['user_name'])?$_REQUEST['user_name']:"";
+	$phone = isset($_REQUEST['phone'])?$_REQUEST['phone']:"";
+	$address = isset($_REQUEST['address'])?$_REQUEST['address']:"";
+
+	if($address!=""&&$phone!=""&& $user_name!=""){
+		$sql = "INSERT INTO crudapi(user_name,address,phone) VALUES('$user_name','$address','$phone');";
 		$res = mysqli_query($conn, $sql);
-		
 		if($res){
 			echo "Success!";
 		}
@@ -23,6 +19,10 @@ header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers
 			echo "Error!";
 		}
 		$conn->close();
+	}else{
+		echo "data sent wrong";
+	}
+
 	
 
 ?>
