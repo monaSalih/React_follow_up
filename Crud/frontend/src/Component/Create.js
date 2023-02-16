@@ -34,6 +34,7 @@ export default class AddItem extends Component {
         // console.log(address,"user_name");
 
             axios.post(`http://localhost/React_follow_up/Crud/backend/add.php?user_name=${user_name}&address=${address}&phone=${phone}`)
+       
 
     }
   
