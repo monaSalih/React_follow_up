@@ -20,7 +20,7 @@ export default class App extends Component{
       <Route path='/' element={<Read/>} />
       <Route path='/Create' element={<Create />} />
       {/* <Route path='/about' element={<About />} /> */}
-      
+      {/* {console.log("hello app")} */}
     </Routes>
       
       
